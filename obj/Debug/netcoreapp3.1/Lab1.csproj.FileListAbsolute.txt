@@ -1,0 +1,17 @@
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Lab1.exe
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Lab1.deps.json
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Lab1.runtimeconfig.json
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Lab1.runtimeconfig.dev.json
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Lab1.dll
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Lab1.pdb
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.csprojAssemblyReference.cache
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.AssemblyInfoInputs.cache
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.AssemblyInfo.cs
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.CoreCompileInputs.cache
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.dll
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.pdb
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.genruntimeconfig.cache
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.View.EmployeeView.resources
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.GenerateResource.cache
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.CopyComplete
+E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Bogus.dll
