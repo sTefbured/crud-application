@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Lab1.Models;
+using Lab1.Repository.Exception;
 
 namespace Lab1.Repository
 {
@@ -16,8 +17,9 @@ namespace Lab1.Repository
             var users = GetAll();
             if (users.Exists(e => e.Login.Equals(user.Login)))
             {
-                return;
+                throw new UserExistsException();
             }
+
             users.Add(user);
             WriteAll(users);
         }
@@ -44,6 +46,7 @@ namespace Lab1.Repository
             {
                 return;
             }
+
             var users = GetAll();
             var user = users.Find(e => e.Login == login);
             if (user != null)
@@ -54,17 +57,35 @@ namespace Lab1.Repository
             }
         }
 
+        public User FindByLoginAndPassword(string login, string password)
+        {
+            var user = GetAll()
+                .Find(e => (e.Login.Equals(login)) && (e.Password == password));
+            if (user == null)
+            {
+                throw new UserNotFoundException("Wrong login or/and password.");
+            }
+
+            return user;
+        }
+
         public User FindByLogin(string login)
         {
-            return GetAll()
-                .Find(e => e.Login == login);
+            var user = GetAll()
+                .Find(e => e.Login.Equals(login));
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+
+            return user;
         }
 
         public List<User> GetAll()
         {
             var formatter = new BinaryFormatter();
             var stream = File.OpenRead(_usersFilePath);
-            var users = (List<User>)formatter.Deserialize(stream);
+            var users = (List<User>) formatter.Deserialize(stream);
             stream.Close();
             return users;
         }
