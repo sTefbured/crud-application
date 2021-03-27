@@ -1,14 +1,12 @@
 ﻿using Lab1.Models;
 using Lab1.Repository;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Lab1.Controllers
 {
     class EmployeeController : IEmployeeController
     {
-        private IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
         public EmployeeController(IEmployeeRepository employeeRepository)
         {

@@ -10,6 +10,9 @@
     <Compile Remove="Database\**" />
     <EmbeddedResource Remove="Database\**" />
     <None Remove="Database\**" />
+    <Compile Update="View\AuthorizationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

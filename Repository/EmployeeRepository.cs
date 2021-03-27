@@ -1,5 +1,4 @@
 ﻿using Lab1.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -73,11 +72,15 @@ namespace Lab1.Repository
             if (employeesFound.Count == 1)
             {
                 Employee employee = allEmployees.Find((e) => e.IsEqualTo(employeesFound[0]));
-                employee.Id = newParameters.Id;
-                employee.FirstName = newParameters.FirstName;
-                employee.SecondName = newParameters.SecondName;
-                employee.Position = newParameters.Position;
-                employee.Address = newParameters.Address;
+                if (employee != null)
+                {
+                    employee.Id = newParameters.Id;
+                    employee.FirstName = newParameters.FirstName;
+                    employee.SecondName = newParameters.SecondName;
+                    employee.Position = newParameters.Position;
+                    employee.Address = newParameters.Address;
+                }
+
                 File.Delete(databasePath);
                 AddAll(allEmployees);
             }

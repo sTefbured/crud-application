@@ -9,7 +9,7 @@ namespace Lab1.View
 {
     public partial class EmployeeView : Form
     {
-        private IEmployeeController _employeeController;
+        private readonly IEmployeeController _employeeController;
         private Employee _currentEmployee;
 
         public EmployeeView(IEmployeeController employeeController)

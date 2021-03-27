@@ -22,7 +22,7 @@ namespace Lab1.Models
         public Employee(string csvLine) : this(CsvHelper.Split(csvLine))
         { }
 
-        public Employee(List<string> parameters) : this(parameters[0], parameters[1],
+        private Employee(List<string> parameters) : this(parameters[0], parameters[1],
                 parameters[2], parameters[3], parameters[4])
         { }
 
