@@ -5,6 +5,6 @@ namespace Lab1.Models
     [Serializable]
     public enum UserRole
     {
-        USER, ADMIN
+        USER, ADMIN, GUEST
     }
 }

@@ -15,7 +15,7 @@ namespace Lab1.View
         public EmployeeView(IEmployeeController employeeController)
         {
             InitializeComponent();
-            List<string> enumNames = new List<string>(Enum.GetNames(typeof(Position)));
+            var enumNames = new List<string>(Enum.GetNames(typeof(Position)));
             enumNames.Insert(0, "Not chosen");
             positionComboBox.DataSource = enumNames;
             _employeeController = employeeController;
@@ -35,11 +35,11 @@ namespace Lab1.View
         }
         private Employee ParseFields()
         {
-            string id = idTextBox.Text;
-            string firstName = firstNameTextBox.Text;
-            string secondName = secondNameTextBox.Text;
-            string position = positionComboBox.Text;
-            string address = addressTextBox.Text;
+            var id = idTextBox.Text;
+            var firstName = firstNameTextBox.Text;
+            var secondName = secondNameTextBox.Text;
+            var position = positionComboBox.Text;
+            var address = addressTextBox.Text;
             return new Employee(id, firstName, secondName,
                 position, address);
         }
@@ -76,7 +76,7 @@ namespace Lab1.View
             {
                 return;
             }
-            DataGridView dataGrid = (DataGridView)sender;
+            var dataGrid = (DataGridView)sender;
             var row = dataGrid.Rows[e.RowIndex];
 
             idTextBox.Text = row.Cells[0].Value.ToString();
@@ -94,11 +94,11 @@ namespace Lab1.View
 
         private void fakeInfoButton_Click(object sender, EventArgs e)
         {
-            Employee employee = new Employee();
+            var employee = new Employee();
             for (int i = 1; i <= 100; i++)
             {
-                Faker faker = new Faker();
-                Person person = faker.Person;
+                var faker = new Faker();
+                var person = faker.Person;
                 employee.Id = i;
                 employee.FirstName = person.FirstName;
                 employee.SecondName = person.LastName;

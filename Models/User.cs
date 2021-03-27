@@ -26,9 +26,14 @@ namespace Lab1.Models
         
         public User() : this("", "", UserRole.USER) {}
 
-        public bool IsAccepted(string login, string password)
+        public bool IsCorrect(string login)
         {
-            return login.Equals(Login) && ComputeHash(password).Equals(Password);
+            return login.Equals(Login);
+        }
+        
+        public bool IsCorrect(string login, string password)
+        {
+            return IsCorrect(login) && ComputeHash(password).Equals(Password);
         }
 
         private string ComputeHash(string line)

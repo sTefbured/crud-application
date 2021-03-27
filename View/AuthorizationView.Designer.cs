@@ -70,7 +70,7 @@ namespace Lab1.View
             this.loginButton.Location = new System.Drawing.Point(110, 277);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(100, 38);
-            this.loginButton.TabIndex = 8;
+            this.loginButton.TabIndex = 7;
             this.loginButton.Text = "Log in";
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
