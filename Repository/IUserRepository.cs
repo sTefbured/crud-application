@@ -1,4 +1,5 @@
-﻿using Lab1.Models;
+﻿using System.Collections.Generic;
+using Lab1.Models;
 
 namespace Lab1.Repository
 {
@@ -9,5 +10,6 @@ namespace Lab1.Repository
         void EditByLogin(string login, User newUser);
         User FindByLoginAndPassword(string login, string password);
         User FindByLogin(string login);
+        List<User> GetAll();
     }
 }
