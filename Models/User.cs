@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Lab1.Models
 {
@@ -6,8 +8,14 @@ namespace Lab1.Models
     public class User
     {
         public string Login { get; set; }
-        public string Password { get; set; }
-        public UserRole Role { get; set; }
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set => _password = ComputeHash(value);
+        }
+
+        public UserRole Role { get; }
 
         public User(string login, string password, UserRole role)
         {
@@ -17,5 +25,17 @@ namespace Lab1.Models
         }
         
         public User() : this("", "", UserRole.USER) {}
+
+        public bool IsAccepted(string login, string password)
+        {
+            return login.Equals(Login) && ComputeHash(password).Equals(Password);
+        }
+
+        private string ComputeHash(string line)
+        {
+            var bytes = SHA512.Create()
+                .ComputeHash(Encoding.UTF8.GetBytes(line));
+            return Encoding.UTF8.GetString(bytes);
+        }
     }
 }
