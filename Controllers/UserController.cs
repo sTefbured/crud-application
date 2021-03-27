@@ -1,10 +1,9 @@
 ﻿using Lab1.Models;
 using Lab1.Repository;
-using Lab1.Repository.Exception;
 
 namespace Lab1.Controllers
 {
-    public class UserController
+    public class UserController : IUserController
     {
         private readonly IUserRepository _userRepository;
         public User CurrentUser { get; private set; }
@@ -15,32 +14,16 @@ namespace Lab1.Controllers
             CurrentUser = null;
         }
 
-        public string Register(string login, string password)
+        public void Register(string login, string password)
         {
-            try
-            {
-                var user = new User(login, password, UserRole.USER);
-                _userRepository.Add(user);
-                return "Registration successful.";
-            }
-            catch (UserExistsException exception)
-            {
-                return exception.Message;
-            }
+            var user = new User(login, password, UserRole.USER);
+            _userRepository.Add(user);
         }
 
-        public string Login(string login, string password)
+        public void Login(string login, string password)
         {
-            try
-            {
-                var user = _userRepository.FindByLoginAndPassword(login, password);
-                CurrentUser = user;
-                return "Hello, " + login;
-            }
-            catch (UserNotFoundException exception)
-            {
-                return exception.Message;
-            }
+            var user = _userRepository.FindByLoginAndPassword(login, password);
+            CurrentUser = user;
         }
     }
 }

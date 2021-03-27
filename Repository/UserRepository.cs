@@ -79,7 +79,7 @@ namespace Lab1.Repository
             return user;
         }
 
-        public List<User> GetAll()
+        private List<User> GetAll()
         {
             var formatter = new BinaryFormatter();
             if (File.Exists(_usersFilePath))
