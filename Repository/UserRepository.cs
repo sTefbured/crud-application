@@ -13,7 +13,7 @@ namespace Lab1.Repository
         public void Add(User user)
         {
             var users = GetAll();
-            if (users.Exists(e => e.Login.Equals(user.Login)))
+            if (users.Exists(u => u.Login.Equals(user.Login)))
             {
                 throw new UserExistsException();
             }
@@ -34,7 +34,7 @@ namespace Lab1.Repository
         public void DeleteByLogin(string login)
         {
             var users = GetAll();
-            users.RemoveAll(e => e.Login.Equals(login));
+            users.RemoveAll(u => u.Login.Equals(login));
             WriteAll(users);
         }
 
@@ -46,7 +46,7 @@ namespace Lab1.Repository
             }
 
             var users = GetAll();
-            var user = users.Find(e => e.Login == login);
+            var user = users.Find(e => e.Login.Equals(login));
             if (user != null)
             {
                 user.Login = newUser.Login;
@@ -58,7 +58,7 @@ namespace Lab1.Repository
         public User FindByLoginAndPassword(string login, string password)
         {
             var user = GetAll()
-                .Find(e => (e.Login.Equals(login)) && (e.Password == password));
+                .Find(u => u.IsAccepted(login, password));
             if (user == null)
             {
                 throw new UserNotFoundException("Wrong login or/and password.");
@@ -70,7 +70,7 @@ namespace Lab1.Repository
         public User FindByLogin(string login)
         {
             var user = GetAll()
-                .Find(e => e.Login.Equals(login));
+                .Find(u => u.Login.Equals(login));
             if (user == null)
             {
                 throw new UserNotFoundException();
@@ -81,14 +81,15 @@ namespace Lab1.Repository
 
         private List<User> GetAll()
         {
-            var formatter = new BinaryFormatter();
             if (File.Exists(_usersFilePath))
             {
+                var formatter = new BinaryFormatter();
                 var stream = File.OpenRead(_usersFilePath);
                 var users = (List<User>) formatter.Deserialize(stream);
                 stream.Close();
                 return users;
             }
+
             return new List<User>();
         }
     }
