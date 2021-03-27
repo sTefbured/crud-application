@@ -4,17 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Bogus;
+using Lab1.Context;
 
 namespace Lab1.View
 {
     public partial class EmployeeView : Form
     {
         private readonly IEmployeeController _employeeController;
+        private readonly SecurityContext _securityContext;
         private Employee _currentEmployee;
 
         public EmployeeView(IEmployeeController employeeController)
         {
             InitializeComponent();
+            _securityContext = SecurityContext.Instance;
             var enumNames = new List<string>(Enum.GetNames(typeof(Position)));
             enumNames.Insert(0, "Not chosen");
             positionComboBox.DataSource = enumNames;
@@ -24,15 +27,22 @@ namespace Lab1.View
 
         private void UpdateGrid()
         {
-            employeesGrid.DataSource = _employeeController.GetAll();
+            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.GetAll)))
+            {
+                employeesGrid.DataSource = _employeeController.GetAll();
+            }
         }
 
         private void findButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            List<Employee> foundEmployees = _employeeController.Find(_currentEmployee);
-            employeesGrid.DataSource = foundEmployees;
+            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Find)))
+            {
+                var foundEmployees = _employeeController.Find(_currentEmployee);
+                employeesGrid.DataSource = foundEmployees;
+            }
         }
+
         private Employee ParseFields()
         {
             var id = idTextBox.Text;
@@ -52,22 +62,33 @@ namespace Lab1.View
         private void addButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            _employeeController.Add(_currentEmployee);
+            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Add)))
+            {
+                _employeeController.Add(_currentEmployee);
+            }
+
             UpdateGrid();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            _employeeController.Delete(_currentEmployee);
+            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Delete)))
+            {
+                _employeeController.Delete(_currentEmployee);
+            }
+
             UpdateGrid();
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            _employeeController.Edit(_currentEmployee, ParseFields());
-            UpdateCurrentEmployee();
-            UpdateGrid();
+            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Edit)))
+            {
+                _employeeController.Edit(_currentEmployee, ParseFields());
+                UpdateCurrentEmployee();
+                UpdateGrid();
+            }
         }
 
         private void employeesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -76,7 +97,8 @@ namespace Lab1.View
             {
                 return;
             }
-            var dataGrid = (DataGridView)sender;
+
+            var dataGrid = (DataGridView) sender;
             var row = dataGrid.Rows[e.RowIndex];
 
             idTextBox.Text = row.Cells[0].Value.ToString();
@@ -94,6 +116,11 @@ namespace Lab1.View
 
         private void fakeInfoButton_Click(object sender, EventArgs e)
         {
+            if (!_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Add)))
+            {
+                return;
+            }
+
             var employee = new Employee();
             for (int i = 1; i <= 100; i++)
             {
@@ -102,9 +129,9 @@ namespace Lab1.View
                 employee.Id = i;
                 employee.FirstName = person.FirstName;
                 employee.SecondName = person.LastName;
-                employee.Position = (Position)(i % 3);
+                employee.Position = (Position) (i % 3);
                 var address = person.Address;
-                employee.Address = string.Join(", ", address.Street, 
+                employee.Address = string.Join(", ", address.Street,
                     address.City, address.ZipCode, address.State);
                 _employeeController.Add(employee);
                 UpdateGrid();

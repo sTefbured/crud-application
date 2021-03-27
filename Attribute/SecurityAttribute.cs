@@ -1,22 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Lab1.Models;
 
 namespace Lab1.Attribute
 {
+    [AttributeUsage(AttributeTargets.Method)]
     public class SecurityAttribute : System.Attribute
     {
-        private readonly HashSet<UserRole> _roles;
+        public HashSet<UserRole> Roles { get; }
 
-        public SecurityAttribute()
+        public SecurityAttribute(params UserRole[] roles)
         {
-            _roles = new HashSet<UserRole>();
-        }
-
-        public SecurityAttribute(params UserRole[] roles) : this()
-        {
+            Roles = new HashSet<UserRole>();
             foreach (var role in roles)
             {
-                _roles.Add(role);
+                Roles.Add(role);
             }
         }
     }
