@@ -2,7 +2,7 @@
 
 namespace Lab1
 {
-    class LimitedTextBox : TextBox
+    public class LimitedTextBox : TextBox
     {
         public LimitedTextBox()
         {

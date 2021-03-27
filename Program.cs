@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Lab1
 {
-    static class Program
+    public static class Program
     {
         [STAThread]
         static void Main()
@@ -11,7 +11,7 @@ namespace Lab1
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Context());
+            Application.Run(Context.AppContext.Instance);
         }
     }
 }

@@ -41,5 +41,10 @@ namespace Lab1.View
             var password = passwordTextBox.Text;
             _userController.Register(login, password);
         }
+        
+        private void guestButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

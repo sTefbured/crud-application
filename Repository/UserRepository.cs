@@ -8,12 +8,17 @@ namespace Lab1.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private const string _usersFilePath = "userinfo.bin";
+        private readonly string _usersFilePath;
 
+        public UserRepository(string filePath)
+        {
+            _usersFilePath = filePath;
+        }
+        
         public void Add(User user)
         {
             var users = GetAll();
-            if (users.Exists(u => u.Login.Equals(user.Login)))
+            if (users.Exists(u => u.IsCorrect(user.Login)))
             {
                 throw new UserExistsException();
             }
@@ -34,7 +39,7 @@ namespace Lab1.Repository
         public void DeleteByLogin(string login)
         {
             var users = GetAll();
-            users.RemoveAll(u => u.Login.Equals(login));
+            users.RemoveAll(u => u.IsCorrect(login));
             WriteAll(users);
         }
 
@@ -46,7 +51,7 @@ namespace Lab1.Repository
             }
 
             var users = GetAll();
-            var user = users.Find(e => e.Login.Equals(login));
+            var user = users.Find(u => u.IsCorrect(login));
             if (user != null)
             {
                 user.Login = newUser.Login;
@@ -57,8 +62,7 @@ namespace Lab1.Repository
 
         public User FindByLoginAndPassword(string login, string password)
         {
-            var user = GetAll()
-                .Find(u => u.IsAccepted(login, password));
+            var user = GetAll().Find(u => u.IsCorrect(login, password));
             if (user == null)
             {
                 throw new UserNotFoundException("Wrong login or/and password.");
@@ -69,8 +73,7 @@ namespace Lab1.Repository
 
         public User FindByLogin(string login)
         {
-            var user = GetAll()
-                .Find(u => u.Login.Equals(login));
+            var user = GetAll().Find(u => u.IsCorrect(login));
             if (user == null)
             {
                 throw new UserNotFoundException();

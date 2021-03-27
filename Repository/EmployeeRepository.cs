@@ -1,6 +1,7 @@
 ﻿using Lab1.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Lab1.Repository
 {
@@ -10,9 +11,9 @@ namespace Lab1.Repository
 
         public bool Add(Employee employee)
         {
-            List<Employee> employees = GetAll();
-            StreamWriter streamWriter = File.AppendText(databasePath);
-            bool isAdded = Add(employee, employees, streamWriter);
+            var employees = GetAll();
+            var streamWriter = File.AppendText(databasePath);
+            var isAdded = Add(employee, employees, streamWriter);
             streamWriter.Close();
             return isAdded;
         }
@@ -29,8 +30,8 @@ namespace Lab1.Repository
 
         private void AddAll(List<Employee> employees)
         {
-            List<Employee> allEmployees = GetAll();
-            StreamWriter streamWriter = File.AppendText(databasePath);
+            var allEmployees = GetAll();
+            var streamWriter = File.AppendText(databasePath);
             foreach (var employee in employees)
             {
                 Add(employee, allEmployees, streamWriter);
@@ -40,8 +41,8 @@ namespace Lab1.Repository
 
         public void Delete(Employee employee)
         {
-            List<Employee> employeesToDelete = Find(employee);
-            List<Employee> employees = GetAll();
+            var employeesToDelete = Find(employee);
+            var employees = GetAll();
             employees.RemoveAll((e) => employeesToDelete
                                             .Exists((emp) => emp.IsEqualTo(e)));
             File.Delete(databasePath);
@@ -50,28 +51,24 @@ namespace Lab1.Repository
 
         public List<Employee> Find(Employee employee)
         {
-            List<Employee> allEmployees = GetAll();
+            var allEmployees = GetAll();
             return allEmployees.FindAll((e) => e.IsCompatibleWith(employee));
         }
 
         public List<Employee> GetAll()
         {
-            List<Employee> employees = new List<Employee>();
-            List<string> lines = GetAllLines();
-            foreach (var line in lines)
-            {
-                employees.Add(new Employee(line));
-            }
-            return employees;
+            var lines = GetAllLines();
+            return lines.Select(line => new Employee(line)).ToList();
         }
 
         public void Edit(Employee oldParameters, Employee newParameters)
         {
-            List<Employee> employeesFound = Find(oldParameters);
-            List<Employee> allEmployees = GetAll();
+            var employeesFound = Find(oldParameters);
+            var allEmployees = GetAll();
             if (employeesFound.Count == 1)
             {
-                Employee employee = allEmployees.Find((e) => e.IsEqualTo(employeesFound[0]));
+                var employee = allEmployees
+                    .Find((e) => e.IsEqualTo(employeesFound[0]));
                 if (employee != null)
                 {
                     employee.Id = newParameters.Id;
@@ -88,7 +85,7 @@ namespace Lab1.Repository
 
         private List<string> GetAllLines()
         {
-            List<string> lines = new List<string>();
+            var lines = new List<string>();
             if (File.Exists(databasePath))
             {
                 var streamReader = new StreamReader(databasePath);

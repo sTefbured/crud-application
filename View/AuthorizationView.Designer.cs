@@ -38,6 +38,7 @@ namespace Lab1.View
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.registerButton = new System.Windows.Forms.Button();
+            this.guestButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginLabel
@@ -54,10 +55,10 @@ namespace Lab1.View
             this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.exitButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.exitButton.Location = new System.Drawing.Point(110, 365);
+            this.exitButton.Location = new System.Drawing.Point(110, 409);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(100, 38);
-            this.exitButton.TabIndex = 9;
+            this.exitButton.TabIndex = 10;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -70,7 +71,7 @@ namespace Lab1.View
             this.loginButton.Location = new System.Drawing.Point(110, 277);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(100, 38);
-            this.loginButton.TabIndex = 8;
+            this.loginButton.TabIndex = 7;
             this.loginButton.Text = "Log in";
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
@@ -113,6 +114,19 @@ namespace Lab1.View
             this.registerButton.UseVisualStyleBackColor = false;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
+            // guestButton
+            // 
+            this.guestButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.guestButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.guestButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.guestButton.Location = new System.Drawing.Point(110, 365);
+            this.guestButton.Name = "guestButton";
+            this.guestButton.Size = new System.Drawing.Size(100, 38);
+            this.guestButton.TabIndex = 9;
+            this.guestButton.Text = "Guest";
+            this.guestButton.UseVisualStyleBackColor = false;
+            this.guestButton.Click += new System.EventHandler(this.guestButton_Click);
+            // 
             // AuthorizationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +136,7 @@ namespace Lab1.View
             this.ControlBox = false;
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.guestButton);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.loginTextBox);
@@ -137,6 +152,8 @@ namespace Lab1.View
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button guestButton;
 
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button loginButton;

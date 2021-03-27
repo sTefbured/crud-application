@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Lab1.Repository
 {
-    interface IEmployeeRepository
+    public interface IEmployeeRepository
     {
         public List<Employee> Find(Employee employee);
 
