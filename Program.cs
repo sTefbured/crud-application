@@ -15,7 +15,7 @@ namespace Lab1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             IEmployeeController controller = new EmployeeController(new EmployeeRepository());
-            Application.Run(new EmployeeView(controller));
+            Application.Run(new AuthorizationView());
         }
     }
 }

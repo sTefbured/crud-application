@@ -15,10 +15,11 @@ namespace Lab1.Controllers
             CurrentUser = null;
         }
 
-        public string Register(User user)
+        public string Register(string login, string password)
         {
             try
             {
+                var user = new User(login, password, UserRole.USER);
                 _userRepository.Add(user);
                 return "Registration successful.";
             }

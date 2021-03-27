@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Lab1.Models;
@@ -84,10 +82,14 @@ namespace Lab1.Repository
         public List<User> GetAll()
         {
             var formatter = new BinaryFormatter();
-            var stream = File.OpenRead(_usersFilePath);
-            var users = (List<User>) formatter.Deserialize(stream);
-            stream.Close();
-            return users;
+            if (File.Exists(_usersFilePath))
+            {
+                var stream = File.OpenRead(_usersFilePath);
+                var users = (List<User>) formatter.Deserialize(stream);
+                stream.Close();
+                return users;
+            }
+            return new List<User>();
         }
     }
 }
