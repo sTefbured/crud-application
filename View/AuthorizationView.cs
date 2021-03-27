@@ -28,7 +28,7 @@ namespace Lab1.View
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            var login = loginLabel.Text;
+            var login = loginTextBox.Text;
             var password = passwordTextBox.Text;
             _userController.Register(login, password);
         }
