@@ -15,7 +15,7 @@ namespace Lab1.Models
             set => _password = ComputeHash(value);
         }
 
-        public UserRole Role { get; }
+        public UserRole Role { get; set; }
 
         public User(string login, string password, UserRole role)
         {

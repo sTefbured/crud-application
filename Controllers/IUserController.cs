@@ -8,5 +8,6 @@ namespace Lab1.Controllers
         void Register(string login, string password);
         void Login(string login, string password);
         List<User> GetAllUsers();
+        void Delete(User user);
     }
 }

@@ -23,9 +23,11 @@ namespace Lab1.Context
             var employeeRepo = new EmployeeRepository();
             var employeeController = new EmployeeController(employeeRepo);
             _employeeForm = new EmployeeView(employeeController);
+            
             var userRepo = new UserRepository(usersDatabasePath);
             var userController = new UserController(userRepo);
             _authorizationForm = new AuthorizationView(userController);
+            
             _administrationForm = new AdministrationView(userController);
             MainForm = _authorizationForm;
         }
@@ -39,7 +41,7 @@ namespace Lab1.Context
                 MainForm.Focus();
                 if (SecurityContext.Instance.CurrentUser.Role == UserRole.ADMIN)
                 {
-                    _administrationForm.Show(MainForm);
+                    _administrationForm.Show();
                 }
             }
             else
