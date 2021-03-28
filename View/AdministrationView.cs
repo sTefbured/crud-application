@@ -10,12 +10,14 @@ namespace Lab1.View
     {
         private readonly IUserController _userController;
         private readonly User _currentUser;
+        private readonly SecurityContext _securityContext;
         
         public AdministrationView(IUserController userController)
         {
             InitializeComponent();
             _userController = userController;
             _currentUser = new User();
+            _securityContext = SecurityContext.Instance;
             UpdateGrid();
         }
 
@@ -52,11 +54,8 @@ namespace Lab1.View
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (SecurityContext.Instance.IsAccessible(_userController, nameof(_userController.Delete)))
-            {
-                _userController.Delete(_currentUser);
-                UpdateGrid();
-            }
+            _securityContext.Invoke(_userController, nameof(_userController.Delete), _currentUser);
+            UpdateGrid();
         }
 
         private void AdministrationView_Activated(object sender, EventArgs e)

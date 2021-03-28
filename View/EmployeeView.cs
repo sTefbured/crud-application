@@ -27,20 +27,17 @@ namespace Lab1.View
 
         private void UpdateGrid()
         {
-            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.GetAll)))
-            {
-                employeesGrid.DataSource = _employeeController.GetAll();
-            }
+            var employees = (IEnumerable<Employee>) _securityContext
+                .Invoke(_employeeController, nameof(_employeeController.GetAll));
+            employeesGrid.DataSource = employees;
         }
 
         private void findButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Find)))
-            {
-                var foundEmployees = _employeeController.Find(_currentEmployee);
-                employeesGrid.DataSource = foundEmployees;
-            }
+            var data = (IEnumerable<Employee>) _securityContext
+                .Invoke(_employeeController, nameof(_employeeController.Find), _currentEmployee);
+            employeesGrid.DataSource = data;
         }
 
         private Employee ParseFields()
@@ -62,33 +59,24 @@ namespace Lab1.View
         private void addButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Add)))
-            {
-                _employeeController.Add(_currentEmployee);
-            }
-
+            _securityContext.Invoke(_employeeController, nameof(_employeeController.Add), _currentEmployee);
             UpdateGrid();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Delete)))
-            {
-                _employeeController.Delete(_currentEmployee);
-            }
-
+            _securityContext.Invoke(_employeeController, 
+                nameof(_employeeController.Delete), _currentEmployee);
             UpdateGrid();
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            if (_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Edit)))
-            {
-                _employeeController.Edit(_currentEmployee, ParseFields());
-                UpdateCurrentEmployee();
-                UpdateGrid();
-            }
+            _securityContext.Invoke(_employeeController, 
+                nameof(_employeeController.Edit), ParseFields());
+            UpdateCurrentEmployee();
+            UpdateGrid();
         }
 
         private void employeesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -116,11 +104,6 @@ namespace Lab1.View
 
         private void fakeInfoButton_Click(object sender, EventArgs e)
         {
-            if (!_securityContext.IsAccessible(_employeeController, nameof(_employeeController.Add)))
-            {
-                return;
-            }
-
             var employee = new Employee();
             for (int i = 1; i <= 100; i++)
             {
@@ -133,7 +116,9 @@ namespace Lab1.View
                 var address = person.Address;
                 employee.Address = string.Join(", ", address.Street,
                     address.City, address.ZipCode, address.State);
-                _employeeController.Add(employee);
+                
+                _securityContext.Invoke(_employeeController, 
+                    nameof(_employeeController.Add), employee);
                 UpdateGrid();
             }
         }
