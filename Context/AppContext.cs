@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Lab1.Controllers;
+using Lab1.Models;
 using Lab1.Repository;
 using Lab1.View;
 
@@ -15,15 +16,19 @@ namespace Lab1.Context
 
         private readonly EmployeeView _employeeForm;
         private readonly AuthorizationView _authorizationForm;
+        private readonly AdministrationView _administrationForm;
 
         private AppContext()
         {
             var employeeRepo = new EmployeeRepository();
             var employeeController = new EmployeeController(employeeRepo);
             _employeeForm = new EmployeeView(employeeController);
+            
             var userRepo = new UserRepository(usersDatabasePath);
             var userController = new UserController(userRepo);
             _authorizationForm = new AuthorizationView(userController);
+            
+            _administrationForm = new AdministrationView(userController);
             MainForm = _authorizationForm;
         }
 
@@ -34,11 +39,21 @@ namespace Lab1.Context
                 MainForm = _employeeForm;
                 MainForm.Show();
                 MainForm.Focus();
+                if (SecurityContext.Instance.CurrentUser.Role == UserRole.ADMIN)
+                {
+                    _administrationForm.Show();
+                }
             }
             else
             {
                 base.OnMainFormClosed(sender, e);
             }
+        }
+
+        public void Exit()
+        {
+            MainForm = null;
+            Application.Exit();
         }
     }
 }

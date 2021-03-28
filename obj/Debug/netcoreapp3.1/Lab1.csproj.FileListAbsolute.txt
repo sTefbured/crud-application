@@ -16,3 +16,4 @@ E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.GenerateRe
 E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.CopyComplete
 E:\Programming\C#\ВСРПП\Lab1\bin\Debug\netcoreapp3.1\Bogus.dll
 E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.View.AuthorizationView.resources
+E:\Programming\C#\ВСРПП\Lab1\obj\Debug\netcoreapp3.1\Lab1.View.AdministrationView.resources

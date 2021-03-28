@@ -8,7 +8,7 @@ namespace Lab1.View
     public partial class AuthorizationView : Form
     {
         private readonly IUserController _userController;
-        
+
         public AuthorizationView(IUserController userController)
         {
             InitializeComponent();
@@ -29,10 +29,10 @@ namespace Lab1.View
                 MessageBox.Show(exception.Message);
             }
         }
-        
+
         private void exitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Context.AppContext.Instance.Exit();
         }
 
         private void registerButton_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Lab1.View
             var password = passwordTextBox.Text;
             _userController.Register(login, password);
         }
-        
+
         private void guestButton_Click(object sender, EventArgs e)
         {
             Close();

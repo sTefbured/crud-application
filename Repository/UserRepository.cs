@@ -13,8 +13,13 @@ namespace Lab1.Repository
         public UserRepository(string filePath)
         {
             _usersFilePath = filePath;
+            var users = GetAll();
+            if (!users.Exists(u => u.Role == UserRole.ADMIN))
+            {
+                Add(new User("admin", "admin", UserRole.ADMIN));
+            }
         }
-        
+
         public void Add(User user)
         {
             var users = GetAll();
@@ -82,7 +87,7 @@ namespace Lab1.Repository
             return user;
         }
 
-        private List<User> GetAll()
+        public List<User> GetAll()
         {
             if (File.Exists(_usersFilePath))
             {
