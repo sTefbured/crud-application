@@ -54,7 +54,8 @@ namespace Lab1.View
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            _securityContext.Invoke(_userController, nameof(_userController.Delete), _currentUser);
+            _securityContext.Invoke(_userController, 
+                nameof(_userController.Delete), _currentUser);
             UpdateGrid();
         }
 

@@ -17,6 +17,9 @@ namespace Lab1.Context
         private readonly EmployeeView _employeeForm;
         private readonly AuthorizationView _authorizationForm;
         private readonly AdministrationView _administrationForm;
+        private readonly UserController _userController;
+        public UserInfoView UserInfoForm { get; private set; }
+        public UserSettingsView UserSettingsForm { get; private set; }
 
         private AppContext()
         {
@@ -25,10 +28,11 @@ namespace Lab1.Context
             _employeeForm = new EmployeeView(employeeController);
             
             var userRepo = new UserRepository(usersDatabasePath);
-            var userController = new UserController(userRepo);
-            _authorizationForm = new AuthorizationView(userController);
+            _userController = new UserController(userRepo);
+            _authorizationForm = new AuthorizationView(_userController);
             
-            _administrationForm = new AdministrationView(userController);
+            _administrationForm = new AdministrationView(_userController);
+
             MainForm = _authorizationForm;
         }
 
@@ -54,6 +58,16 @@ namespace Lab1.Context
         {
             MainForm = null;
             Application.Exit();
+        }
+
+        public void InitializeUserInfoView()
+        {
+            UserInfoForm = new UserInfoView();
+        }
+
+        public void InitializeUserSettingsView()
+        {
+            UserSettingsForm = new UserSettingsView(_userController);
         }
     }
 }

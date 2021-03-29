@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Lab1.Controllers;
 using Lab1.Repository.Exception;
+using AppContext = Lab1.Context.AppContext;
 
 namespace Lab1.View
 {
@@ -28,11 +29,14 @@ namespace Lab1.View
             {
                 MessageBox.Show(exception.Message);
             }
+
+            AppContext.Instance.InitializeUserInfoView();
+            AppContext.Instance.InitializeUserSettingsView();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            Context.AppContext.Instance.Exit();
+            AppContext.Instance.Exit();
         }
 
         private void registerButton_Click(object sender, EventArgs e)

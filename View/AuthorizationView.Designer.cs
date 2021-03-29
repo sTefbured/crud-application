@@ -91,6 +91,7 @@ namespace Lab1.View
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(200, 29);
             this.passwordTextBox.TabIndex = 6;
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // passwordLabel
             // 

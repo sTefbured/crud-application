@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Bogus;
 using Lab1.Context;
+using AppContext = Lab1.Context.AppContext;
 
 namespace Lab1.View
 {
@@ -59,7 +60,8 @@ namespace Lab1.View
         private void addButton_Click(object sender, EventArgs e)
         {
             UpdateCurrentEmployee();
-            _securityContext.Invoke(_employeeController, nameof(_employeeController.Add), _currentEmployee);
+            _securityContext.Invoke(_employeeController, 
+                nameof(_employeeController.Add), _currentEmployee);
             UpdateGrid();
         }
 
@@ -121,6 +123,16 @@ namespace Lab1.View
                     nameof(_employeeController.Add), employee);
                 UpdateGrid();
             }
+        }
+
+        private void showInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppContext.Instance.UserInfoForm.Show(this);
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppContext.Instance.UserSettingsForm.Show(this);
         }
     }
 }

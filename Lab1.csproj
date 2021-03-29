@@ -16,6 +16,12 @@
     <Compile Update="View\AdministrationView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\UserInfoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\UserSettingsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

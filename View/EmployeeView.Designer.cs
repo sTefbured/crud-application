@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.idTextBox = new LimitedTextBox();
+            this.idTextBox = new Lab1.LimitedTextBox();
             this.idLabel = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameLabel = new System.Windows.Forms.Label();
@@ -44,23 +44,28 @@
             this.editButton = new System.Windows.Forms.Button();
             this.employeesGrid = new System.Windows.Forms.DataGridView();
             this.fakeInfoButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesGrid)).BeginInit();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize) (this.employeesGrid)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // idTextBox
             // 
-            this.idTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idTextBox.Location = new System.Drawing.Point(195, 43);
-            this.idTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.idTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.idTextBox.Location = new System.Drawing.Point(167, 37);
+            this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(210, 33);
+            this.idTextBox.Size = new System.Drawing.Size(181, 33);
             this.idTextBox.TabIndex = 0;
             // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.idLabel.Location = new System.Drawing.Point(19, 46);
+            this.idLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.idLabel.Location = new System.Drawing.Point(16, 40);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(30, 25);
             this.idLabel.TabIndex = 1;
@@ -68,18 +73,18 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.firstNameTextBox.Location = new System.Drawing.Point(195, 86);
-            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.firstNameTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.firstNameTextBox.Location = new System.Drawing.Point(167, 75);
+            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(210, 33);
+            this.firstNameTextBox.Size = new System.Drawing.Size(181, 33);
             this.firstNameTextBox.TabIndex = 0;
             // 
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.firstNameLabel.Location = new System.Drawing.Point(19, 89);
+            this.firstNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.firstNameLabel.Location = new System.Drawing.Point(16, 77);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(104, 25);
             this.firstNameLabel.TabIndex = 1;
@@ -87,18 +92,18 @@
             // 
             // secondNameTextBox
             // 
-            this.secondNameTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.secondNameTextBox.Location = new System.Drawing.Point(195, 129);
-            this.secondNameTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.secondNameTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.secondNameTextBox.Location = new System.Drawing.Point(167, 112);
+            this.secondNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.secondNameTextBox.Name = "secondNameTextBox";
-            this.secondNameTextBox.Size = new System.Drawing.Size(210, 33);
+            this.secondNameTextBox.Size = new System.Drawing.Size(181, 33);
             this.secondNameTextBox.TabIndex = 0;
             // 
             // secondNameLabel
             // 
             this.secondNameLabel.AutoSize = true;
-            this.secondNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.secondNameLabel.Location = new System.Drawing.Point(19, 132);
+            this.secondNameLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.secondNameLabel.Location = new System.Drawing.Point(16, 114);
             this.secondNameLabel.Name = "secondNameLabel";
             this.secondNameLabel.Size = new System.Drawing.Size(132, 25);
             this.secondNameLabel.TabIndex = 1;
@@ -107,8 +112,8 @@
             // positionLabel
             // 
             this.positionLabel.AutoSize = true;
-            this.positionLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.positionLabel.Location = new System.Drawing.Point(19, 175);
+            this.positionLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.positionLabel.Location = new System.Drawing.Point(16, 152);
             this.positionLabel.Name = "positionLabel";
             this.positionLabel.Size = new System.Drawing.Size(84, 25);
             this.positionLabel.TabIndex = 1;
@@ -116,19 +121,19 @@
             // 
             // positionComboBox
             // 
-            this.positionComboBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.positionComboBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.positionComboBox.FormattingEnabled = true;
-            this.positionComboBox.Location = new System.Drawing.Point(195, 172);
-            this.positionComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.positionComboBox.Location = new System.Drawing.Point(167, 149);
+            this.positionComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.positionComboBox.Name = "positionComboBox";
-            this.positionComboBox.Size = new System.Drawing.Size(210, 33);
+            this.positionComboBox.Size = new System.Drawing.Size(181, 33);
             this.positionComboBox.TabIndex = 2;
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addressLabel.Location = new System.Drawing.Point(19, 215);
+            this.addressLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.addressLabel.Location = new System.Drawing.Point(16, 186);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(83, 25);
             this.addressLabel.TabIndex = 1;
@@ -136,20 +141,20 @@
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addressTextBox.Location = new System.Drawing.Point(195, 215);
-            this.addressTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.addressTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.addressTextBox.Location = new System.Drawing.Point(167, 186);
+            this.addressTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.addressTextBox.Multiline = true;
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(210, 88);
+            this.addressTextBox.Size = new System.Drawing.Size(181, 77);
             this.addressTextBox.TabIndex = 0;
             // 
             // findButton
             // 
-            this.findButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.findButton.Location = new System.Drawing.Point(35, 383);
+            this.findButton.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.findButton.Location = new System.Drawing.Point(30, 332);
             this.findButton.Name = "findButton";
-            this.findButton.Size = new System.Drawing.Size(84, 36);
+            this.findButton.Size = new System.Drawing.Size(72, 31);
             this.findButton.TabIndex = 4;
             this.findButton.Text = "Find";
             this.findButton.UseVisualStyleBackColor = true;
@@ -157,10 +162,10 @@
             // 
             // addButton
             // 
-            this.addButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addButton.Location = new System.Drawing.Point(125, 383);
+            this.addButton.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.addButton.Location = new System.Drawing.Point(107, 332);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(84, 36);
+            this.addButton.Size = new System.Drawing.Size(72, 31);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -168,10 +173,10 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.deleteButton.Location = new System.Drawing.Point(215, 383);
+            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.deleteButton.Location = new System.Drawing.Point(184, 332);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(84, 36);
+            this.deleteButton.Size = new System.Drawing.Size(72, 31);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -179,10 +184,10 @@
             // 
             // editButton
             // 
-            this.editButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.editButton.Location = new System.Drawing.Point(305, 383);
+            this.editButton.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.editButton.Location = new System.Drawing.Point(261, 332);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(84, 36);
+            this.editButton.Size = new System.Drawing.Size(72, 31);
             this.editButton.TabIndex = 7;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
@@ -194,29 +199,61 @@
             this.employeesGrid.AllowUserToDeleteRows = false;
             this.employeesGrid.AllowUserToResizeColumns = false;
             this.employeesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeesGrid.Location = new System.Drawing.Point(435, 12);
+            this.employeesGrid.Location = new System.Drawing.Point(373, 37);
             this.employeesGrid.Name = "employeesGrid";
             this.employeesGrid.ReadOnly = true;
             this.employeesGrid.RowTemplate.Height = 25;
-            this.employeesGrid.Size = new System.Drawing.Size(607, 525);
+            this.employeesGrid.Size = new System.Drawing.Size(520, 428);
             this.employeesGrid.TabIndex = 8;
             this.employeesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeesGrid_CellClick);
             // 
             // fakeInfoButton
             // 
-            this.fakeInfoButton.Location = new System.Drawing.Point(12, 527);
+            this.fakeInfoButton.Location = new System.Drawing.Point(10, 457);
             this.fakeInfoButton.Name = "fakeInfoButton";
-            this.fakeInfoButton.Size = new System.Drawing.Size(10, 10);
+            this.fakeInfoButton.Size = new System.Drawing.Size(9, 9);
             this.fakeInfoButton.TabIndex = 9;
             this.fakeInfoButton.Text = "button1";
             this.fakeInfoButton.UseVisualStyleBackColor = true;
             this.fakeInfoButton.Click += new System.EventHandler(this.fakeInfoButton_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.userToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(903, 24);
+            this.menuStrip.TabIndex = 10;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.showInfoToolStripMenuItem, this.settingsToolStripMenuItem});
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.userToolStripMenuItem.Text = "User";
+            // 
+            // showInfoToolStripMenuItem
+            // 
+            this.showInfoToolStripMenuItem.Name = "showInfoToolStripMenuItem";
+            this.showInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showInfoToolStripMenuItem.Text = "Show info";
+            this.showInfoToolStripMenuItem.Click += new System.EventHandler(this.showInfoToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // EmployeeView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 549);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(903, 476);
             this.Controls.Add(this.fakeInfoButton);
             this.Controls.Add(this.employeesGrid);
             this.Controls.Add(this.editButton);
@@ -233,15 +270,23 @@
             this.Controls.Add(this.secondNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.idTextBox);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "EmployeeView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmployeeView";
             this.Activated += new System.EventHandler(this.EmployeeView_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.employeesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.employeesGrid)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
 
         #endregion
 
