@@ -23,13 +23,17 @@ namespace Lab1.Repository
         public void Add(User user)
         {
             var users = GetAll();
-            if (users.Exists(u => u.IsCorrect(user.Login)))
+            ValidateUser(users, user);
+            users.Add(user);
+            WriteAll(users);
+        }
+
+        private void ValidateUser(List<User> users, User user)
+        {
+            if (users.Exists(u => u.Equals(user.Login)))
             {
                 throw new UserExistsException();
             }
-
-            users.Add(user);
-            WriteAll(users);
         }
 
         private void WriteAll(List<User> users)
@@ -44,7 +48,7 @@ namespace Lab1.Repository
         public void DeleteByLogin(string login)
         {
             var users = GetAll();
-            users.RemoveAll(u => u.IsCorrect(login));
+            users.RemoveAll(u => u.Equals(login));
             WriteAll(users);
         }
 
@@ -54,20 +58,24 @@ namespace Lab1.Repository
             {
                 return;
             }
-
+            
             var users = GetAll();
-            var user = users.Find(u => u.IsCorrect(login));
+            var user = users.Find(u => u.Equals(login));
             if (user != null)
             {
-                user.Login = newUser.Login;
-                user.Password = newUser.Password;
+                if (login != newUser.Login)
+                {
+                    ValidateUser(users, newUser);
+                }
+                int index = users.IndexOf(user);
+                users[index] = newUser;
                 WriteAll(users);
             }
         }
 
         public User FindByLoginAndPassword(string login, string password)
         {
-            var user = GetAll().Find(u => u.IsCorrect(login, password));
+            var user = GetAll().Find(u => u.Equals(login, password));
             if (user == null)
             {
                 throw new UserNotFoundException("Wrong login or/and password.");
@@ -78,7 +86,7 @@ namespace Lab1.Repository
 
         public User FindByLogin(string login)
         {
-            var user = GetAll().Find(u => u.IsCorrect(login));
+            var user = GetAll().Find(u => u.Equals(login));
             if (user == null)
             {
                 throw new UserNotFoundException();

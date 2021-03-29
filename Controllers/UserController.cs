@@ -54,6 +54,17 @@ namespace Lab1.Controllers
             _userRepository.DeleteByLogin(user.Login);
         }
 
+        [Security(UserRole.ADMIN, UserRole.USER)]
+        public void Edit(User oldUser, string newLogin, string newPassword)
+        {
+            if (IsValidLoginOrPassword(newLogin)
+                && IsValidLoginOrPassword(newPassword))
+            {
+                var newUser = new User(newLogin, newPassword, oldUser.Role);
+                _userRepository.EditByLogin(oldUser.Login, newUser);
+            }
+        }
+
         private bool IsValidLoginOrPassword(string line)
         {
             if ((line.Length < 4) || (line.Length > 15))
