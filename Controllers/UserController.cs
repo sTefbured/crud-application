@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Lab1.Attribute;
 using Lab1.Context;
@@ -16,9 +17,14 @@ namespace Lab1.Controllers
         {
             _userRepository = userRepository;
         }
-        
+
         public void Register(string login, string password)
         {
+            if (!IsValidLoginOrPassword(login) || !IsValidLoginOrPassword(password))
+            {
+                return;
+            }
+
             var user = new User(login, password, UserRole.USER);
             try
             {
@@ -46,6 +52,24 @@ namespace Lab1.Controllers
         public void Delete(User user)
         {
             _userRepository.DeleteByLogin(user.Login);
+        }
+
+        private bool IsValidLoginOrPassword(string line)
+        {
+            if ((line.Length < 4) || (line.Length > 15))
+            {
+                MessageBox.Show(@"Login and password length must be more" 
+                    + @" than 4 and less than 15 characters.", @"Error");
+                return false;
+            }
+
+            if (line.All(char.IsLetterOrDigit))
+            {
+                return true;
+            }
+            MessageBox.Show(@"Login and password must consist of letters" 
+                            + @" and/or numbers.", @"Error");
+            return false;
         }
     }
 }

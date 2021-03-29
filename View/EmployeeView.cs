@@ -74,7 +74,7 @@ namespace Lab1.View
         private void editButton_Click(object sender, EventArgs e)
         {
             _securityContext.Invoke(_employeeController, 
-                nameof(_employeeController.Edit), ParseFields());
+                nameof(_employeeController.Edit), _currentEmployee, ParseFields());
             UpdateCurrentEmployee();
             UpdateGrid();
         }

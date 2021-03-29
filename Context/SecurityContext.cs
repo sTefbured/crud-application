@@ -42,13 +42,12 @@ namespace Lab1.Context
             return type.GetMethods()
                         .FirstOrDefault(m =>
             {
-                var methodParams = m.GetParameters();
-                if ((parameters.Length != methodParams.Length) || (m.Name != methodName))
+                if (!m.Name.Equals(methodName) || m.GetParameters().Length != parameters.Length)
                 {
                     return false;
                 }
 
-                return !parameters.Where((t, i) => t.GetType() != methodParams[i].ParameterType).Any();
+                return !parameters.Where((t, i) => t.GetType() != m.GetParameters()[i].ParameterType).Any();
             });
         }
     }
