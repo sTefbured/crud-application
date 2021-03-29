@@ -20,7 +20,7 @@ namespace Lab1.Controllers
             _employeeRepository.Add(employee);
         }
 
-        [Security(UserRole.ADMIN, UserRole.USER)]
+        [Security(UserRole.ADMIN)]
         public void Delete(Employee employee)
         {
             _employeeRepository.Delete(employee);
